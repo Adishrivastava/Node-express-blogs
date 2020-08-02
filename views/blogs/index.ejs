@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Node Learn</title>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<!-- link to stylesheet -->
+		<link rel="stylesheet" href="/index.css" />
+	</head>
+	<body style="background-color: rgb(80, 138, 255);">
+		<% const brand = 'Node Learning' %> <%- include('../layout/navbar.ejs') %>
+
+		<div class="blogs content">
+			<h1>
+				Hey! here I am learning node 💩💩💩 😎.
+			</h1>
+			<ul class="list">
+				<% if (blogs.length > 0) { %> <% blogs.forEach(blog => { %>
+				<li class="list-item">
+					<a href="/blogs/<%= blog._id %> " class="blog-link">
+						<h3><%= blog.title %></h3>
+						<p><%= blog.snippet %></p>
+					</a>
+					<a class="delete" data-doc="<%= blog._id %>">
+						<img src="/delete.svg" alt="" />
+					</a>
+				</li>
+				<% }) %> <% } else { %>
+				<p>No blogs to display 😭😭</p>
+				<% } %>
+			</ul>
+		</div>
+
+		<!-- ! javascript -->
+		<script>
+			const delBtn = document.querySelector('a.delete');
+			if (delBtn != null) {
+				delBtn.addEventListener('click', (evt) => {
+					console.log('here we go');
+					const endpoint = `/blogs/${delBtn.dataset.doc}`;
+
+					fetch(endpoint, {
+						method: 'DELETE',
+					})
+						.then((response) => response.json())
+						.then((result) => {
+							window.location.href = result.redirect;
+						})
+						.catch((err) => console.log(err));
+				});
+			}
+		</script>
+	</body>
+</html>

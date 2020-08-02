@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Node Learn</title>
+		<!-- Required meta tags -->
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		/>
+		<!-- link to stylesheet -->
+		<link rel="stylesheet" href="/index.css" />
+	</head>
+	<body style="background-color: rgb(154, 176, 64);">
+		<%- include('../layout/navbar.ejs') %>
+		<div class="create-blog content">
+			<h1>
+				creating blog 😱😱.
+			</h1>
+			<form action="/blogs" method="POST" id="blog-form">
+				<label for="title" class="form-item">Blog Title: </label>
+				<input
+					type="text"
+					id="title"
+					name="title"
+					class="form-item"
+					required
+				/>
+				<label for="snippet" class="form-item">Blog snippet: </label>
+				<input
+					type="text"
+					id="snippet"
+					name="snippet"
+					class="form-item"
+					required
+				/>
+				<label for="body" class="form-item"> Blog body: </label>
+				<textarea
+					type="text"
+					rows="3"
+					class="form-item"
+					name="body"
+					required
+				></textarea>
+				<button>Create</button>
+			</form>
+		</div>
+	</body>
+</html>
